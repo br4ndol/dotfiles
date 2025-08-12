@@ -1,0 +1,178 @@
+/* =================================================================================
+WAYBAR - Archivo de Estilo CSS Organizado
+================================================================================= */
+/* --- 1. Estilos Globales --- */
+* {
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 13px;
+    margin: 0px;
+}
+
+window#waybar {
+    color: #ffffff;
+    background: rgba(15, 15, 15, 0.893);
+    border-radius: 5px;
+}
+
+tooltip {
+    background: #161616;
+    border-radius: 12px;
+}
+
+#custom-launcher {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #1693D0;
+}
+
+#custom-launcher:hover {
+    color: #5fadd4;
+}
+
+#custom-dots {
+    margin-right: 10px;
+    color: #6d6d6d;
+    font-size: 16px;
+}
+
+#cpu {
+    margin-right: 10px;
+    color: #000000;
+    background: #789FF5;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#memory {
+    margin-right: 10px;
+    color: #000000;
+    background: #9D78F5;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#mpris {
+    color: rgb(0, 0, 0);
+    background: #F578CE;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#custom-updates {
+    margin-right: 10px;
+    color: #f0d400;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#workspaces {
+    margin-right: 10px;
+    background: #212121;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#workspaces button.active {
+    color: #ffd91c;
+}
+
+#workspaces button.default {
+    color: #00a4f0;
+}
+
+/* Workspace urgente */
+#workspaces button.urgent {
+    color: #ffd91c;
+}
+
+#bluetooth {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #000000;
+    background: #F5F578;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#pulseaudio {
+    margin-right: 10px;
+    font-size: 14px;;
+    color: rgb(0, 0, 0);
+    background: #91F578;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    background-color: black;
+}
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: rgb(143, 86, 208);
+}
+
+#network {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #000000;
+    background: #78F5E3;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#battery {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #000000;
+    background: #789BF5;
+    border-radius: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#clock {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    background: #202020;
+    border-radius: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#custom-notification {
+    margin-right: 10px;
+    color: #499fd5;
+    font-size: 14px;
+}
+
+#custom-power {
+    margin-right: 10px;
+    color: #ff0000;
+    font-size: 14px;
+    border-radius: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 15px
+}
+
+#custom-tray-arrow {
+    margin-left: 8px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    border-radius: 12px;
+}

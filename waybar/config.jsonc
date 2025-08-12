@@ -1,0 +1,287 @@
+{
+    // =================================================================================
+    // CONFIGURACIÓN GENERAL DE LA BARRA
+    // =================================================================================
+    "layer": "top",
+    "position": "top",
+    "height": 48,
+    "margin-top": 5,
+    "margin-left": 20,
+    "margin-right": 20,
+    "spacing": 5,
+
+    // =================================================================================
+    // ORDEN DE LOS MÓDULOS (SIN CAMBIOS, TAL COMO LO PEDISTE)
+    // =================================================================================
+    "modules-left": [
+        "custom/launcher",
+        "custom/dots",
+        "cpu",
+        "memory",
+        "mpris"
+    ],
+    "modules-center": [
+        "custom/notification",
+        "hyprland/workspaces",
+        "custom/updates"
+    ],
+    "modules-right": [
+        "bluetooth",
+        "group/audio",
+        "network",
+        "battery",
+        "clock",
+        "group/tray-group",
+        "custom/power"
+    ],
+
+    // =================================================================================
+    // CONFIGURACIÓN DE MÓDULOS - IZQUIERDA
+    // =================================================================================
+    "custom/launcher": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wofi --show drun"
+    },
+
+    "custom/dots": {
+        "format": "󰇙"
+    },
+
+    "cpu": {
+        "interval": 2,
+        "states": {
+            "warning": 80,
+            "critical": 95
+        },
+        "format": "  {usage}% ",
+        "tooltip-format": "Carga: {load}\nFrecuencia Media: {avg_frequency}GHz",
+        "on-click": "alacritty -e btop"
+    },
+    "memory": {
+        "states": {
+            "warning": 80,
+            "critical": 95
+        },
+        "format": "  {used}GiB ",
+        "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB ({percentage}%)\nSwap: {swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB ({swapPercentage}%)",
+        "on-click": "alacritty -e btop"
+    },
+    "mpris": {
+        "player": "playerctld",
+        "format": " {player_icon}   {dynamic}  {status_icon} ",
+        "format-paused": " {player_icon} <i>{dynamic}</i> {status_icon} ",
+        "player-icons": {
+            "default": "",
+            "spotify": "",
+            "firefox": "",
+            "vlc": "󰕼"
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": ""
+        },
+        "dynamic-order": ["artist", "title"],
+        "dynamic-separator": " - ",
+        "dynamic-len": 40,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "tooltip-format": "{player} | {artist} - {title} ({position}/{length})",
+        "enable-tooltip-len-limits": true
+    },
+
+// =================================================================================
+// MÓDULO DE ACTUALIZACIONES UNIFICADO (Acción Completa)
+// =================================================================================
+"custom/updates": {
+    // --- Formato y Comportamiento ---
+    "format": " {} {icon} ",
+    "return-type": "json",
+    
+    // ESTA ES LA CLAVE PARA OCULTARLO:
+    // Cuando no hay actualizaciones, el icono es una cadena vacía, haciendo que el módulo desaparezca.
+    "format-icons": {
+        "has-updates": "󱍷",
+        "updated": ""
+    },
+
+    // --- Ejecución ---
+    "exec-if": "which waybar-module-pacman-updates",
+    
+    // Usamos los argumentos recomendados para un rendimiento óptimo.
+    // Y '--no-zero-output' para que no muestre el '0' cuando está actualizado.
+    "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 60 --network-interval-seconds 1800",
+
+    // --- Interacción ---
+    // ESTA ES LA ACCIÓN UNIFICADA Y DESATENDIDA:
+    "on-click": "alacritty -e sh -c 'yay -Syu --noconfirm && flatpak update -y; echo \"\nActualización completada. Presiona Enter para salir.\"; read'"
+},
+
+
+
+    // =================================================================================
+    // CONFIGURACIÓN DE MÓDULOS - CENTRO
+    // =================================================================================
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "persistent-workspaces": {
+            "*": 5
+        },
+        "format-icons": {
+            "active": "󰮯",
+            "default": "󰊠",
+            "empty": "●",
+            "urgent": "󰮯"
+        },
+        "on-click": "activate"
+    },
+
+    // =================================================================================
+    // CONFIGURACIÓN DE MÓDULOS - DERECHA
+    // =================================================================================
+    "bluetooth": {
+        "format": " 󰂯 {device_alias} ",
+        "format-battery": "{device_alias} {device_battery_percentage}%",
+        "format-on": " 󰂯 ",
+        "format-off": " 󰂲 ",
+        "format-disabled": " 󰂲 ",
+        "format-no-controller": "",
+        "on-click": "blueman-manager",
+        "on-click-right": "rfkill toggle bluetooth",
+        "tooltip-format-connected": "{controller_alias} \n\n{num_connections} dispositivo(s) conectado(s):\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "  - {device_alias}",
+        "tooltip-format-enumerate-connected-battery": "  - {device_alias} - Batería: {device_battery_percentage}%"
+    },
+    "group/audio": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ]
+    },
+    "pulseaudio": {
+        "format": " {icon} {volume}% ",
+        "format-bluetooth": " {icon}  {volume}% ",
+        "format-muted": "󰖁 Muted",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "hands-free": "󱡏",
+            "speaker": "󰓃",
+            "portable": "",
+            "car": "",
+            "hdmi": "",
+            "default": [ "", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "{desc} ({volume}%)"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "network": {
+        "interval": 1,
+        "format-wifi": " {icon} ",
+        "format-ethernet": "  {bandwidthTotalBits} ",
+        "format-disconnected": " 󰤭 ",
+        "tooltip-format-wifi": "SSID: {essid}\nFuerza: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-ethernet": "Interfaz: {ifname}\nIP: {ipaddr}\n  {bandwidthDownBits}     {bandwidthUpBits}",
+        "tooltip-format-disconnected": "Desconectado",
+        "on-click": "alacritty -e nmtui",
+        "format-icons": {
+            "wifi": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
+        }
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": " {capacity}% {icon} ",
+        "format-charging": " {capacity}% {icon}  ",
+        "format-plugged": " {capacity}% {icon} 󰻹 ",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{capacity}% {timeTo}",
+        "tooltip-format-charging": "Cargando... ({power}W) | {timeTo}",
+        "tooltip-format-plugged": "Cargado ({capacity}%) | Salud: {health}"
+    },
+    "clock": {
+        "interval": 1,
+        // LA LÍNEA SIGUIENTE ES LA CAUSA PROBABLE DEL ERROR. LA HE COMENTADO.
+        // "locale": "es_ES.UTF-8",
+        "format": "  {:%I:%M %p} ",
+        "format-alt": "  {:%A, %d de %B de %Y} ",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#f9e2af'><b>{}</b></span>",
+                "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+                "weeks":      "<span color='#94e2d5'><b>W{}</b></span>",
+                "weekdays":   "<span color='#89b4fa'><b>{}</b></span>",
+                "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click": "toggle-mode",
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "return-type": "json",
+        "exec": "~/.config/waybar/scripts/swaync-status.sh",
+        "interval": 1,
+        "format": "{alt} {text}",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "on-click-middle": "swaync-client -D"
+    },
+    "group/tray-group": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+            "children-class": "tray-child"
+        },
+        "modules": [
+            "custom/tray-arrow",
+            "tray"
+        ]
+    },
+    "custom/tray-arrow": {
+        "format": "",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+    "custom/power": {
+        "format": "  ",
+        "tooltip": false,
+        "on-click": "bash ~/.config/waybar/scripts/power-menu.sh"
+    }
+}

@@ -1,0 +1,95 @@
+# =================================================================================
+# WOFI - Archivo de Configuración Maestro
+# =================================================================================
+#
+# Descomenta y modifica las líneas para activar las opciones.
+#
+
+# --- Apariencia y Posicionamiento ---
+
+# Archivo de estilo CSS a utilizar.
+# style=~/.config/wofi/style.css
+
+# Ancho y alto de la ventana. Puede ser en píxeles (ej. 600) o porcentaje (ej. 50%).
+width=35%
+height=30%
+
+# Posición en la pantalla. Opciones: center, top_left, top, top_right, etc.
+location=center
+
+# Desplazamiento en píxeles desde la posición definida.
+# xoffset=0
+# yoffset=0
+
+# Orientación de la lista de resultados.
+# orientation=vertical
+
+# Número de columnas para mostrar los resultados.
+columns=1
+
+# Altura de la ventana en número de líneas en lugar de píxeles.
+# lines=10
+
+
+# --- Comportamiento Funcional ---
+
+# Modo principal a ejecutar. 'drun' es para aplicaciones.
+show=drun
+
+# Texto que aparece en la barra de búsqueda.
+prompt=Apps...
+
+# Algoritmo de búsqueda. 'fuzzy' es altamente recomendado.
+# Opciones: contains, multi-contains, fuzzy
+matching=fuzzy
+
+# Búsqueda insensible a mayúsculas/minúsculas.
+insensitive=true
+
+# Orden de los resultados. 'alphabetical' es una buena opción.
+# Opciones: default, alphabetical
+sort_order=alphabetical
+
+# Terminal a usar para aplicaciones que lo requieran.
+term=alacritty
+
+no_actions=true
+
+# --- Características Visuales ---
+
+# Permite mostrar los iconos de las aplicaciones.
+allow_images=false
+
+# Tamaño de los iconos en píxeles.
+image_size=28
+
+# Oculta las barras de scroll para un look más limpio.
+hide_scroll=true
+
+# Usa el tema oscuro de GTK si está disponible.
+gtk_dark=true
+
+# Usa un GtkSearchEntry (con icono de lupa) en lugar de un GtkEntry normal.
+use_search_box=true
+
+
+# --- Opciones Avanzadas ---
+
+# Permite que el marcado Pango (<b>, <i>, etc.) sea renderizado.
+# allow_markup=true
+
+# Si es true, wofi se cierra si pierde el foco.
+# close_on_focus_loss=false
+
+# Capa de Wayland en la que se dibuja. 'overlay' es la más alta.
+# Opciones: background, bottom, top, overlay
+# layer=overlay
+
+# Si es true, la ventana se ajusta dinámicamente al número de resultados.
+# dynamic_lines=false
+
+# Oculta la barra de búsqueda por completo.
+# hide_search=false
+
+# Si es true, al pulsar Enter se ejecuta lo que has escrito, no el primer resultado.
+# exec_search=false

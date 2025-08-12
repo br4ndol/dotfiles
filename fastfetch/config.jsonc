@@ -1,0 +1,121 @@
+/*
+Edited by Benssi
+credits to: https://github.com/HyDE-Project/HyDE/tree/master/Configs/.config/fastfetch
+            https://github.com/Chick2D/neofetch-themes?tab=readme-ov-file
+
+*/
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+    "type": "small",        // Logo type: auto, builtin, small, file, etc.
+    "source": "arch",      // Built-in logo name or file path
+    "width": 65,           // Width in characters (for image logos)
+    "height": 35,          // Height in characters (for image logos)
+    "padding": {
+        "top": 3,          // Top padding
+        "left": 2,         // Left padding
+        "right": 2         // Right padding
+    },
+    "color": {             // Override logo colors
+        "1": "blue",
+        "2": "cyan"
+    }
+},
+    "display": {
+      "separator": " : "
+    },
+    "modules": [
+
+      {
+        "type": "title",
+        "key": "  ",
+        "format": "{6} {7} {8}"
+      },
+      {
+        "type": "custom",
+        "format": "╭──────────────────────☘ ☘──────────────────────╮"
+      },
+      {
+        "type": "os",
+        "key": "  󰣇 OS",
+        "format": "{2}",
+        "keyColor": "red"
+      },
+      {
+        "type": "kernel",
+        "key": "   Kernel",
+        "format": "{1} {2}",
+        "keyColor": "red"
+      },
+      {
+        "type": "shell",
+        "key": "   Shell",
+        "keyColor": "magenta"
+      },
+      {
+        "type": "terminal",
+        "key": "   Terminal",
+        "format": "{5}",
+        "keyColor": "magenta"
+      },
+      {
+        "type": "packages",
+        "key": "  󰮯 Packages",
+        "keyColor": "cyan"
+      },
+      {
+        "type": "wm",
+        "key": "   WM",
+        "format": "{2} {5}",
+        "keyColor": "cyan"
+      },
+      {
+        "type": "battery",
+        "key": "  󱊣 Battery",
+        "format": "{4} {5}",
+        "keyColor": "green"
+      },
+      {
+        "type": "uptime",
+        "key": "   Uptime",
+        "format": "{2}h {3}m",
+        "keyColor": "green"
+      },
+
+      {
+        "type": "de",
+        "key": "  󱗃 DE",
+        "format": "{2} {3}",
+        "keyColor": "yellow"
+      },
+      {
+        "type": "memory",
+        "key": "   Memory ",
+        "format": "{1} / {2} {3}",
+        "keyColor": "yellow"
+      },
+      {
+        "type": "cpu",
+        "format": "{1}",
+        "key": "   CPU",
+        "keyColor": "yellow"
+      },
+      {
+        "type": "gpu",
+        "format": "{1} {2}",
+        "key": "  󰊴 GPU",
+        "keyColor": "blue"
+      },
+      {
+        "type": "colors",
+        "paddingLeft": 17,
+        "symbol": "star"
+      },
+      {
+        "type": "custom",
+        "format": "╰────────────────╯☘           ☘╰────────────────╯"
+      },
+
+      "break"
+    ]
+  }

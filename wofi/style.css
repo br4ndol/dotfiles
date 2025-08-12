@@ -1,0 +1,58 @@
+/* =================================================================================
+ * WOFI - Archivo de Estilo CSS (Corregido y Mejorado)
+ * ================================================================================= */
+
+window {
+    border: 2px solid rgba(221, 170, 255, 0.773);
+    border-radius: 0px;
+    background: rgba(11, 9, 13, 0.773);
+}
+
+#input {
+    color: #ffffff;
+    margin: 12px;
+    font-size: 16px;
+    padding: 7px;
+    border-radius: 0px;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(221, 170, 255, 0.255);
+    
+    /* Propiedades para anular el foco de GTK */
+    outline: none;
+    box-shadow: none;
+}
+
+/* Estilo opcional para cuando el input está enfocado */
+#input:focus {
+    border-color: rgba(221, 170, 255, 0.773);
+}
+
+#scroll {
+    margin: 20px; 
+}
+
+#entry {
+    color: #ffffff;
+    padding: 7px;
+    margin-top: 8px;
+}
+
+#entry:selected {
+    color: rgb(0, 0, 0);
+    background: rgb(221, 170, 255);
+    border-radius: 0px;
+}
+
+#img {
+    font-size: 5px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+#text {
+    color: #ffffff;
+}
+
+#text:selected {
+    color: rgb(0, 0, 0);
+}
