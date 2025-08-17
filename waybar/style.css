@@ -2,6 +2,10 @@
 WAYBAR - Archivo de Estilo CSS Organizado
 ================================================================================= */
 /* --- 1. Estilos Globales --- */
+
+/* Importa los colores de mocha.css */
+@import url("mocha.css");
+
 * {
     font-family: "JetBrains Mono Nerd Font";
     font-size: 13px;
@@ -9,105 +13,174 @@ WAYBAR - Archivo de Estilo CSS Organizado
 }
 
 window#waybar {
-    color: #ffffff;
-    background: rgba(15, 15, 15, 0.893);
-    border-radius: 5px;
+    color: @text;
+    background: @base;
+    border-radius: 15px;
+    border: 2px solid @surface0;
 }
 
 tooltip {
-    background: #161616;
+    background: @base;
     border-radius: 12px;
+    border: 2px solid @surface0;
 }
 
+
 #custom-launcher {
-    font-size: 15px;
+    font-size: 18px;
     margin-left: 15px;
     margin-right: 10px;
-    color: #1693D0;
+    color: @blue;
+    box-shadow: #000000;
 }
 
 #custom-launcher:hover {
-    color: #5fadd4;
+    color: @sapphire;
 }
+
 
 #custom-dots {
     margin-right: 10px;
-    color: #6d6d6d;
+    color: @overlay2;
     font-size: 16px;
 }
 
 #cpu {
     margin-right: 10px;
-    color: #000000;
-    background: #789FF5;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @blue;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
 }
+
+#cpu:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
+}
+
 
 #memory {
     margin-right: 10px;
-    color: #000000;
-    background: #9D78F5;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @sky;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#memory:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #mpris {
-    color: rgb(0, 0, 0);
-    background: #F578CE;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @green;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
 }
 
-#custom-updates {
+#mpris:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
+}
+
+#custom-notification {
     margin-right: 10px;
-    color: #f0d400;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @sapphire;
+    font-size: 15px;
+}
+
+#custom-notification:hover {
+    color: @teal;
 }
 
 #workspaces {
     margin-right: 10px;
-    background: #212121;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+#workspaces button.empty {
+    color: rgb(157, 0, 255);
 }
 
 #workspaces button.active {
-    color: #ffd91c;
+    color: rgb(217, 0, 255);
 }
 
 #workspaces button.default {
-    color: #00a4f0;
+    color: rgb(0, 34, 255);
 }
 
 /* Workspace urgente */
 #workspaces button.urgent {
-    color: #ffd91c;
+    color: rgb(94, 255, 0);
+}
+
+#workspaces button.special {
+    color: rgb(255, 230, 0);
+}
+
+#workspaces button.persistent {
+    color: rgb(255, 0, 0);
+}
+
+#custom-updates {
+    font-size: 15px;
+    margin-right: 10px;
+    color: @flamingo;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 #bluetooth {
     margin-right: 10px;
     font-size: 14px;
-    color: #000000;
-    background: #F5F578;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @pink;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#bluetooth:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #pulseaudio {
     margin-right: 10px;
     font-size: 14px;;
-    color: rgb(0, 0, 0);
-    background: #91F578;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @red;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#pulseaudio:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #pulseaudio-slider trough {
@@ -125,54 +198,88 @@ tooltip {
 #network {
     margin-right: 10px;
     font-size: 14px;
-    color: #000000;
-    background: #78F5E3;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @maroon;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#network:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
+}
+
+#backlight {
+    margin-right: 10px;
+    font-size: 14px;
+    color: @peach;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#backlight:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #battery {
     margin-right: 10px;
     font-size: 14px;
-    color: #000000;
-    background: #789BF5;
-    border-radius: 5px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @yellow;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
+}
+
+#battery:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #clock {
     margin-right: 10px;
     font-size: 14px;
-    color: #ffffff;
-    background: #202020;
-    border-radius: 12px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    color: @green;
+    background: @surface0;
+    border: 2px solid @surface1;
+    border-radius: 20px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+    transition: background-color 0.25s ease-in-out,
+                border-color 0.25s ease-in-out; /* transición suave */
 }
 
-#custom-notification {
-    margin-right: 10px;
-    color: #499fd5;
-    font-size: 14px;
+#clock:hover {
+    background: @surface1;
+    border: 2px solid @surface2;
 }
 
 #custom-power {
     margin-right: 10px;
-    color: #ff0000;
     font-size: 14px;
-    border-radius: 12px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-right: 15px
+    color: @red;
+    margin-top: 9px;
+    margin-bottom: 9px;
 }
 
 #custom-tray-arrow {
-    margin-left: 8px;
-    margin-right: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    color: #ffffff;
-    border-radius: 12px;
+    margin-right: 0px;
+    font-size: 14px;
+    color: @text;
+    margin-top: 9px;
+    margin-bottom: 9px;
 }
+

@@ -4,7 +4,7 @@
     // =================================================================================
     "layer": "top",
     "position": "top",
-    "height": 48,
+    "height": 40,
     "margin-top": 5,
     "margin-left": 20,
     "margin-right": 20,
@@ -27,8 +27,9 @@
     ],
     "modules-right": [
         "bluetooth",
-        "group/audio",
+        "pulseaudio",
         "network",
+        "backlight",
         "battery",
         "clock",
         "group/tray-group",
@@ -54,7 +55,7 @@
             "warning": 80,
             "critical": 95
         },
-        "format": "  {usage}% ",
+        "format": "   {usage}%   ",
         "tooltip-format": "Carga: {load}\nFrecuencia Media: {avg_frequency}GHz",
         "on-click": "alacritty -e btop"
     },
@@ -63,7 +64,7 @@
             "warning": 80,
             "critical": 95
         },
-        "format": "  {used}GiB ",
+        "format": "   {used}GiB  ",
         "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB ({percentage}%)\nSwap: {swapUsed:0.1f}GiB / {swapTotal:0.1f}GiB ({swapPercentage}%)",
         "on-click": "alacritty -e btop"
     },
@@ -90,51 +91,62 @@
         "enable-tooltip-len-limits": true
     },
 
-// =================================================================================
-// MÓDULO DE ACTUALIZACIONES UNIFICADO (Acción Completa)
-// =================================================================================
-"custom/updates": {
-    // --- Formato y Comportamiento ---
-    "format": " {} {icon} ",
-    "return-type": "json",
-    
-    // ESTA ES LA CLAVE PARA OCULTARLO:
-    // Cuando no hay actualizaciones, el icono es una cadena vacía, haciendo que el módulo desaparezca.
-    "format-icons": {
-        "has-updates": "󱍷",
-        "updated": ""
-    },
-
-    // --- Ejecución ---
-    "exec-if": "which waybar-module-pacman-updates",
-    
-    // Usamos los argumentos recomendados para un rendimiento óptimo.
-    // Y '--no-zero-output' para que no muestre el '0' cuando está actualizado.
-    "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 60 --network-interval-seconds 1800",
-
-    // --- Interacción ---
-    // ESTA ES LA ACCIÓN UNIFICADA Y DESATENDIDA:
-    "on-click": "alacritty -e sh -c 'yay -Syu --noconfirm && flatpak update -y; echo \"\nActualización completada. Presiona Enter para salir.\"; read'"
-},
-
-
 
     // =================================================================================
     // CONFIGURACIÓN DE MÓDULOS - CENTRO
     // =================================================================================
+    
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    
     "hyprland/workspaces": {
         "all-outputs": true,
         "format": "{icon}",
         "persistent-workspaces": {
-            "*": 5
+            "eDP-1": 5,
+            "DP-3": 3
         },
         "format-icons": {
-            "active": "󰮯",
-            "default": "󰊠",
-            "empty": "●",
-            "urgent": "󰮯"
+            "active": "A",
+            "default": "D",
+            "empty": "E",
+            "persistent": "P",
+            "special": "S",
+            "urgent": "U"
+
         },
         "on-click": "activate"
+    },
+
+
+    "custom/updates": {
+        "format": " {} {icon} ",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": ""
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 60 --network-interval-seconds 60",
+        "on-click": "alacritty -e sh -c 'yay -Syu --noconfirm && flatpak update -y; echo \"\nActualización completada. Presiona Enter para salir.\"; read'"
     },
 
     // =================================================================================
@@ -165,17 +177,17 @@
         ]
     },
     "pulseaudio": {
-        "format": " {icon} {volume}% ",
-        "format-bluetooth": " {icon}  {volume}% ",
+        "format": " {icon}   {volume}%  ",
+        "format-bluetooth": "  {icon}   {volume}% ",
         "format-muted": "󰖁 Muted",
         "format-icons": {
-            "headphone": "",
-            "headset": "",
-            "hands-free": "󱡏",
-            "speaker": "󰓃",
-            "portable": "",
-            "car": "",
-            "hdmi": "",
+            //"headphone": "",
+            //"headset": "",
+            //"hands-free": "󱡏",
+            //"speaker": "󰓃",
+            //"portable": "",
+            //"car": "",
+            //"hdmi": "",
             "default": [ "", "", ""]
         },
         "scroll-step": 5,
@@ -190,9 +202,9 @@
     },
     "network": {
         "interval": 1,
-        "format-wifi": " {icon} ",
-        "format-ethernet": "  {bandwidthTotalBits} ",
-        "format-disconnected": " 󰤭 ",
+        "format-wifi": " {icon} {bandwidthTotalBits}  ",
+        "format-ethernet": " 󰈀   {bandwidthTotalBits}  ",
+        "format-disconnected": " 󰤭  ",
         "tooltip-format-wifi": "SSID: {essid}\nFuerza: {signalStrength}%\nIP: {ipaddr}",
         "tooltip-format-ethernet": "Interfaz: {ifname}\nIP: {ipaddr}\n  {bandwidthDownBits}     {bandwidthUpBits}",
         "tooltip-format-disconnected": "Desconectado",
@@ -208,15 +220,21 @@
         }
     },
 
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": " {icon}  {percent}% ",
+        "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"]
+    },
+
     "battery": {
         "interval": 5,
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": " {capacity}% {icon} ",
-        "format-charging": " {capacity}% {icon}  ",
-        "format-plugged": " {capacity}% {icon} 󰻹 ",
+        "format": " {icon} {capacity}% ",
+        "format-charging": "  {icon} {capacity}% ",
+        "format-plugged": " 󰻹 {icon} {capacity}% ",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{capacity}% {timeTo}",
         "tooltip-format-charging": "Cargando... ({power}W) | {timeTo}",
@@ -224,10 +242,8 @@
     },
     "clock": {
         "interval": 1,
-        // LA LÍNEA SIGUIENTE ES LA CAUSA PROBABLE DEL ERROR. LA HE COMENTADO.
-        // "locale": "es_ES.UTF-8",
-        "format": "  {:%I:%M %p} ",
-        "format-alt": "  {:%A, %d de %B de %Y} ",
+        "format": "  {:%H:%M - %d/%m/%y}  ",
+        "format-alt": "  {:%A, %B %d, %Y}  ",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
@@ -249,16 +265,7 @@
             "on-scroll-down": "shift_down"
         }
     },
-    "custom/notification": {
-        "tooltip": false,
-        "return-type": "json",
-        "exec": "~/.config/waybar/scripts/swaync-status.sh",
-        "interval": 1,
-        "format": "{alt} {text}",
-        "on-click": "swaync-client -t -sw",
-        "on-click-right": "swaync-client -d -sw",
-        "on-click-middle": "swaync-client -D"
-    },
+
     "group/tray-group": {
         "orientation": "horizontal",
         "drawer": {
@@ -277,7 +284,11 @@
     },
     "tray": {
         "icon-size": 20,
-        "spacing": 10
+        "spacing": 10,
+        "icons":{
+            "blueman": "bluetooth",
+            "rog-control-center": "/home/br4ndol/Pictures/asus_rog.png"
+        }
     },
     "custom/power": {
         "format": "  ",
