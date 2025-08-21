@@ -11,7 +11,7 @@
 # style=~/.config/wofi/style.css
 
 # Ancho y alto de la ventana. Puede ser en píxeles (ej. 600) o porcentaje (ej. 50%).
-width=35%
+width=30%
 height=30%
 
 # Posición en la pantalla. Opciones: center, top_left, top, top_right, etc.
@@ -58,10 +58,10 @@ no_actions=true
 # --- Características Visuales ---
 
 # Permite mostrar los iconos de las aplicaciones.
-allow_images=false
+allow_images=true
 
 # Tamaño de los iconos en píxeles.
-image_size=28
+image_size=24
 
 # Oculta las barras de scroll para un look más limpio.
 hide_scroll=true

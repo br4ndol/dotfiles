@@ -1,5 +1,5 @@
 /*
-Edited by Benssi
+Edited by br4ndol
 credits to: https://github.com/HyDE-Project/HyDE/tree/master/Configs/.config/fastfetch
             https://github.com/Chick2D/neofetch-themes?tab=readme-ov-file
 
@@ -22,7 +22,7 @@ credits to: https://github.com/HyDE-Project/HyDE/tree/master/Configs/.config/fas
     }
 },
     "display": {
-      "separator": " : "
+      "separator": "  "
     },
     "modules": [
 
@@ -37,75 +37,78 @@ credits to: https://github.com/HyDE-Project/HyDE/tree/master/Configs/.config/fas
       },
       {
         "type": "os",
-        "key": "  󰣇 OS",
+        "key": "  󰣇",
         "format": "{2}",
         "keyColor": "red"
       },
       {
         "type": "kernel",
-        "key": "   Kernel",
+        "key": "  ",
         "format": "{1} {2}",
         "keyColor": "red"
       },
       {
         "type": "shell",
-        "key": "   Shell",
+        "key": "  ",
         "keyColor": "magenta"
       },
       {
         "type": "terminal",
-        "key": "   Terminal",
+        "key": "  ",
         "format": "{5}",
         "keyColor": "magenta"
       },
       {
         "type": "packages",
-        "key": "  󰮯 Packages",
+        "key": "  󰮯",
         "keyColor": "cyan"
       },
       {
         "type": "wm",
-        "key": "   WM",
+        "key": "  ",
         "format": "{2} {5}",
         "keyColor": "cyan"
       },
       {
         "type": "battery",
-        "key": "  󱊣 Battery",
+        "key": "  󱊣",
         "format": "{4} {5}",
         "keyColor": "green"
       },
       {
         "type": "uptime",
-        "key": "   Uptime",
+        "key": "  ",
         "format": "{2}h {3}m",
         "keyColor": "green"
       },
 
       {
         "type": "de",
-        "key": "  󱗃 DE",
+        "key": "  󰇄",
         "format": "{2} {3}",
         "keyColor": "yellow"
       },
       {
         "type": "memory",
-        "key": "   Memory ",
+        "key": "  ",
         "format": "{1} / {2} {3}",
         "keyColor": "yellow"
       },
       {
         "type": "cpu",
         "format": "{1}",
-        "key": "   CPU",
+        "key": "  ",
         "keyColor": "yellow"
       },
       {
-        "type": "gpu",
-        "format": "{1} {2}",
-        "key": "  󰊴 GPU",
-        "keyColor": "blue"
+      "type": "gpu",
+      "format": "{1} {2}",
+      "key": "  󰊴",
+      "keyColor": "blue",
+      "hideType": "integrated"
       },
+
+      
       {
         "type": "colors",
         "paddingLeft": 17,

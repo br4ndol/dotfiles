@@ -4,25 +4,22 @@ WAYBAR - Archivo de Estilo CSS Organizado
 /* --- 1. Estilos Globales --- */
 
 /* Importa los colores de mocha.css */
-@import url("mocha.css");
 
 * {
-    font-family: "JetBrains Mono Nerd Font";
+    font-family: "Ubuntu Nerd Font";
     font-size: 13px;
     margin: 0px;
 }
 
 window#waybar {
-    color: @text;
-    background: @base;
-    border-radius: 15px;
-    border: 2px solid @surface0;
+    background: rgba(20, 20, 20, 1);
+    border-radius: 10px;
+    min-height: 0px;
 }
 
 tooltip {
-    background: @base;
+    background: rgba(20, 20, 20, 1);
     border-radius: 12px;
-    border: 2px solid @surface0;
 }
 
 
@@ -30,247 +27,119 @@ tooltip {
     font-size: 18px;
     margin-left: 15px;
     margin-right: 10px;
-    color: @blue;
-    box-shadow: #000000;
 }
 
-#custom-launcher:hover {
-    color: @sapphire;
-}
 
 
 #custom-dots {
     margin-right: 10px;
-    color: @overlay2;
     font-size: 16px;
 }
 
 #cpu {
     margin-right: 10px;
-    color: @blue;
-    background: @surface0;
-    border: 2px solid @surface1;
     border-radius: 20px;
     margin-top: 10px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#cpu:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 
 #memory {
     margin-right: 10px;
-    color: @sky;
-    background: @surface0;
-    border: 2px solid @surface1;
     border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#memory:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #mpris {
-    color: @green;
-    background: @surface0;
-    border: 2px solid @surface1;
+    color: rgba(200, 200, 200, 1);
+
     border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#mpris:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #custom-notification {
     margin-right: 10px;
-    color: @sapphire;
     font-size: 15px;
 }
 
-#custom-notification:hover {
-    color: @teal;
+#workspaces {
+    background: rgba(45, 45, 45, 1);
+    border-radius: 20px;
+    margin-top: 4px;
+    margin-bottom: 4px;
 }
 
-#workspaces {
-    margin-right: 10px;
-    background: rgb(255, 255, 255);
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+#workspaces button {
+    padding: 0 2px;            /* Reduce el padding horizontal de los botones */
+    margin: 2px 0;            /* Reduce los márgenes verticales de los botones */
 }
 
 #workspaces button.empty {
-    color: rgb(157, 0, 255);
+    color: rgba(120, 120, 120, 1);
 }
 
 #workspaces button.active {
-    color: rgb(217, 0, 255);
+    color: rgb(255, 255, 255);
 }
 
 #workspaces button.default {
-    color: rgb(0, 34, 255);
-}
-
-/* Workspace urgente */
-#workspaces button.urgent {
-    color: rgb(94, 255, 0);
-}
-
-#workspaces button.special {
-    color: rgb(255, 230, 0);
-}
-
-#workspaces button.persistent {
-    color: rgb(255, 0, 0);
+    color: rgba(120, 120, 120, 1);
 }
 
 #custom-updates {
     font-size: 15px;
     margin-right: 10px;
-    color: @flamingo;
     margin-top: 8px;
     margin-bottom: 8px;
 }
 
 #bluetooth {
-    margin-right: 10px;
     font-size: 14px;
-    color: @pink;
-    background: @surface0;
-    border: 2px solid @surface1;
     border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#bluetooth:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #pulseaudio {
-    margin-right: 10px;
     font-size: 14px;;
-    color: @red;
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
 }
 
-#pulseaudio:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
-}
-
-#pulseaudio-slider trough {
-    min-height: 10px;
-    min-width: 80px;
-    border-radius: 5px;
-    background-color: black;
-}
-#pulseaudio-slider highlight {
-    min-width: 10px;
-    border-radius: 5px;
-    background-color: rgb(143, 86, 208);
-}
 
 #network {
-    margin-right: 10px;
     font-size: 14px;
-    color: @maroon;
-    background: @surface0;
-    border: 2px solid @surface1;
     border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#network:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #backlight {
     margin-right: 10px;
     font-size: 14px;
-    color: @peach;
-    background: @surface0;
-    border: 2px solid @surface1;
     border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#backlight:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #battery {
-    margin-right: 10px;
     font-size: 14px;
-    color: @yellow;
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#battery:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #clock {
     margin-right: 10px;
     font-size: 14px;
-    color: @green;
-    background: @surface0;
-    border: 2px solid @surface1;
-    border-radius: 20px;
     margin-top: 9px;
     margin-bottom: 9px;
-    transition: background-color 0.25s ease-in-out,
-                border-color 0.25s ease-in-out; /* transición suave */
-}
-
-#clock:hover {
-    background: @surface1;
-    border: 2px solid @surface2;
 }
 
 #custom-power {
     margin-right: 10px;
     font-size: 14px;
-    color: @red;
     margin-top: 9px;
     margin-bottom: 9px;
 }
@@ -278,7 +147,6 @@ tooltip {
 #custom-tray-arrow {
     margin-right: 0px;
     font-size: 14px;
-    color: @text;
     margin-top: 9px;
     margin-bottom: 9px;
 }

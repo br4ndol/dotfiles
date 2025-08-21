@@ -5,34 +5,27 @@
     "layer": "top",
     "position": "top",
     "height": 40,
-    "margin-top": 5,
+    "margin-top": 8,
     "margin-left": 20,
     "margin-right": 20,
-    "spacing": 5,
+    "spacing": 10,
 
     // =================================================================================
     // ORDEN DE LOS MÓDULOS (SIN CAMBIOS, TAL COMO LO PEDISTE)
     // =================================================================================
     "modules-left": [
         "custom/launcher",
-        "custom/dots",
-        "cpu",
-        "memory",
+        "hyprland/workspaces",
         "mpris"
     ],
     "modules-center": [
-        "custom/notification",
-        "hyprland/workspaces",
-        "custom/updates"
+        "clock"
     ],
     "modules-right": [
         "bluetooth",
-        "pulseaudio",
         "network",
-        "backlight",
+        "pulseaudio",
         "battery",
-        "clock",
-        "group/tray-group",
         "custom/power"
     ],
 
@@ -71,11 +64,11 @@
     "mpris": {
         "player": "playerctld",
         "format": " {player_icon}   {dynamic}  {status_icon} ",
-        "format-paused": " {player_icon} <i>{dynamic}</i> {status_icon} ",
+        "format-paused": " {player_icon}  <i>{dynamic}</i>  {status_icon} ",
         "player-icons": {
-            "default": "",
+            "default": "",
             "spotify": "",
-            "firefox": "",
+            "firefox": "󰈹",
             "vlc": "󰕼"
         },
         "status-icons": {
@@ -120,17 +113,10 @@
     "hyprland/workspaces": {
         "all-outputs": true,
         "format": "{icon}",
-        "persistent-workspaces": {
-            "eDP-1": 5,
-            "DP-3": 3
-        },
         "format-icons": {
-            "active": "A",
-            "default": "D",
-            "empty": "E",
-            "persistent": "P",
-            "special": "S",
-            "urgent": "U"
+            "active": "󰮯",
+            "default": "󰊠",
+            "empty": ""
 
         },
         "on-click": "activate"
@@ -165,19 +151,9 @@
         "tooltip-format-enumerate-connected": "  - {device_alias}",
         "tooltip-format-enumerate-connected-battery": "  - {device_alias} - Batería: {device_battery_percentage}%"
     },
-    "group/audio": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 500,
-            "transition-left-to-right": false
-        },
-        "modules": [
-            "pulseaudio",
-            "pulseaudio/slider"
-        ]
-    },
+
     "pulseaudio": {
-        "format": " {icon}   {volume}%  ",
+        "format": "{icon}",
         "format-bluetooth": "  {icon}   {volume}% ",
         "format-muted": "󰖁 Muted",
         "format-icons": {
@@ -188,24 +164,20 @@
             //"portable": "",
             //"car": "",
             //"hdmi": "",
-            "default": [ "", "", ""]
+            "default": [ "󰕿", "", ""]
         },
         "scroll-step": 5,
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip-format": "{desc} ({volume}%)"
     },
-    "pulseaudio/slider": {
-        "min": 0,
-        "max": 100,
-        "orientation": "horizontal"
-    },
+
     "network": {
-        "interval": 1,
-        "format-wifi": " {icon} {bandwidthTotalBits}  ",
-        "format-ethernet": " 󰈀   {bandwidthTotalBits}  ",
+        "interval": 2,
+        "format-wifi": "{icon}",
+        "format-ethernet": " ",
         "format-disconnected": " 󰤭  ",
-        "tooltip-format-wifi": "SSID: {essid}\nFuerza: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip-format-wifi": "SSID: {essid}\nFuerza: {signalStrength}%\nIP: {ipaddr}\n󰏔  {bandwidthDownBits}   󰏕  {bandwidthUpBits}",
         "tooltip-format-ethernet": "Interfaz: {ifname}\nIP: {ipaddr}\n  {bandwidthDownBits}     {bandwidthUpBits}",
         "tooltip-format-disconnected": "Desconectado",
         "on-click": "alacritty -e nmtui",
@@ -232,17 +204,17 @@
             "warning": 30,
             "critical": 15
         },
-        "format": " {icon} {capacity}% ",
-        "format-charging": "  {icon} {capacity}% ",
+        "format": "{icon}",
+        "format-charging": "{icon}",
         "format-plugged": " 󰻹 {icon} {capacity}% ",
-        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "format-icons": ["󱃍", "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{capacity}% {timeTo}",
         "tooltip-format-charging": "Cargando... ({power}W) | {timeTo}",
         "tooltip-format-plugged": "Cargado ({capacity}%) | Salud: {health}"
     },
     "clock": {
         "interval": 1,
-        "format": "  {:%H:%M - %d/%m/%y}  ",
+        "format": "  {:%a %d  %R}  ",
         "format-alt": "  {:%A, %B %d, %Y}  ",
         "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
@@ -259,11 +231,12 @@
             }
         },
         "actions": {
-            "on-click": "toggle-mode",
-            "on-click-right": "mode",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
+    "on-click": "mode",
+    "on-click-right": "mode",
+    "on-scroll-up": "shift_up",
+    "on-scroll-down": "shift_down"
+}
+
     },
 
     "group/tray-group": {
