@@ -8,7 +8,7 @@
     "margin-top": 8,
     "margin-left": 20,
     "margin-right": 20,
-    "spacing": 10,
+    "spacing": 0,
 
     // =================================================================================
     // Modules
@@ -28,6 +28,7 @@
     ],
     "modules-right": [
         "tray",
+        "privacy",
         "pulseaudio",
         "bluetooth",
         "network",
@@ -75,27 +76,13 @@
 
     "custom/gpu-usage": {
         "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
-        "format": " {}%",
+        "format": "󰢮 {}%",
         "return-type": "",
-        "interval": 1
-    },  
-
-    "hyprland/window": {
-        "format": "{class}",
-        "icon": true,
-        "icon-size": 20,
-        "max-length": 30,
-        "rewrite": {
-            "code": "VS Code",
-            "brave-browser": "Brave",
-            "nemo": "Nemo",
-            "rog-control-center": "ROG Control Center",
-            "org.vinegarhq.sober": "Sober",
-            "it.mijorus.gearlever": "Gear lever"
-
-        }
+        "interval": 1,
+        "tooltip-format": "GPU Usage: {}%"
     },
 
+    
     "mpris": {
         "player": "playerctld",
         "format": "{player_icon} {dynamic} {status_icon} ",
@@ -158,6 +145,22 @@
         "on-click": "activate"
     },
 
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": true,
+        "icon-size": 20,
+        "max-length": 30,
+        "rewrite": {
+            "code": "VS Code",
+            "brave-browser": "Brave",
+            "nemo": "Nemo",
+            "rog-control-center": "ROG Control Center",
+            "org.vinegarhq.sober": "Sober",
+            "it.mijorus.gearlever": "Gear lever"
+
+        }
+    },
+
     "custom/updates": {
     "format": "{} {icon}",
     "return-type": "json",
@@ -166,7 +169,7 @@
         "updated": ""
     },
     "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 5 --network-interval-seconds 5",
+    "exec": "waybar-module-pacman-updates --no-zero-output --interval-seconds 120 --network-interval-seconds 120",
     "on-click": "alacritty -e sh -c 'yay -Syu --noconfirm && flatpak update -y; echo \"\nUpdate completed. Press Enter to exit.\"; read'"
     },
 
@@ -175,6 +178,34 @@
     // Right Modules Configuration
     // =================================================================================
     
+    "tray": {
+        "icon-size": 17,
+        "spacing": 10,
+        "icons":{
+            "blueman": "bluetooth",
+            "rog-control-center": "/home/br4ndol/Pictures/asus_rog.png"
+        }
+    },
+
+    "privacy": {
+	    "icon-spacing": 10,
+	    "icon-size": 17,
+	    "transition-duration": 250,
+	    "modules": [
+            {
+			"type": "screenshare",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		    },
+		    {
+			"type": "audio-in",
+			"tooltip": true,
+			"tooltip-icon-size": 24
+		    }
+	    ],
+	    "ignore-monitor": true
+    },
+
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": " {icon} {volume}% ",
@@ -220,6 +251,7 @@
         "tooltip-format-ethernet": "Interfaz: {ifname}\nIP: {ipaddr}\n  {bandwidthDownBits}     {bandwidthUpBits}",
         "tooltip-format-disconnected": "Disconnected",
         "on-click": "nm-connection-editor",
+        "on-click-right": "alacritty -e nmtui",
         "format-icons": {
             "wifi": [
             "󰤯",
@@ -288,14 +320,6 @@
         }
     },
 
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10,
-        "icons":{
-            "blueman": "bluetooth",
-            "rog-control-center": "/home/br4ndol/Pictures/asus_rog.png"
-        }
-    },
     "custom/power": {
         "format": "",
         "tooltip": false,
