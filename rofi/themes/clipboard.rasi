@@ -1,0 +1,88 @@
+/*
+ * Rofi theme for Cliphist, inspired by the provided image.
+ * ~/.config/rofi/themes/clipboard.rasi
+ */
+
+* {
+    /* Colors from the image */
+    bg:          #282A36; /* Dark purple/charcoal background */
+    fg:          #F8F8F2; /* Light foreground text */
+    selected:    #FF79C6; /* Pink/magenta for selection */
+    green:       #50FA7B; /* Green for the icon */
+    
+    background-color: transparent;
+    text-color:       @fg;
+    font:             "JetBrainsMono Nerd Font 10";
+}
+
+window {
+    background-color: @bg;
+    border:           2px;
+    border-color:     @selected;
+    border-radius:    12px;
+    width:            50%;
+    padding:          20px;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing:  15px;
+}
+
+inputbar {
+    children: [ icon-clipboard, prompt, entry ];
+    spacing: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Custom element for the clipboard icon */
+icon-clipboard {
+    content:          ""; /* Nerd Font icon for clipboard */
+    expand:           false;
+    padding:          5px 10px;
+    border-radius:    8px;
+    background-color: @green;
+    text-color:       @bg;
+}
+
+prompt {
+    padding:          5px;
+    border-radius:    8px;
+    background-color: @selected;
+    text-color:       @bg;
+}
+
+entry {
+    placeholder: "Type to filter";
+    padding: 5px;
+}
+
+listview {
+    lines:    8;
+    spacing:  5px;
+    scrollbar: true;
+}
+
+element {
+    padding:       8px;
+    border-radius: 8px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+element.selected.normal {
+    background-color: @selected;
+    text-color:       @bg;
+}
+
+scrollbar {
+    width:        4px;
+    border:       0px;
+    handle-width: 8px;
+    handle-color: @selected;
+    border-radius: 4px;
+}

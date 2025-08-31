@@ -1,0 +1,7 @@
+@import "config.rasi"
+
+configuration {
+  // Define your configuration options here
+
+  font: "JetBrains Mono 14";
+}
