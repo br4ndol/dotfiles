@@ -2,17 +2,18 @@
 WAYBAR - Archivo de Estilo CSS Organizado
 ================================================================================= */
 /* --- 1. Estilos Globales --- */
-
+@import "mocha.css";
 /* Importa los colores de mocha.css */
 
 * {
-    font-family: "Ubuntu Nerd Font";
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 7 Brands";
+    font-weight: bold;
     font-size: 13px;
     margin: 0px;
 }
 
 window#waybar {
-    background: rgba(20, 20, 20, 1);
+    background: rgba(0, 0, 0, 0);    
     border-radius: 10px;
     min-height: 0px;
 }
@@ -22,132 +23,151 @@ tooltip {
     border-radius: 12px;
 }
 
+/* =====================================Left=========================================== */
 
 #custom-launcher {
-    font-size: 18px;
-    margin-left: 15px;
-    margin-right: 10px;
+    font-size: 20px;
+    background: @theme_bg_color;
+    padding: 0px 18.7px 0px 11px;
+    border-radius: 9px;
+    color: @blue;
+    transition: color 0.3s ease-in-out;
+}
+#custom-launcher:hover {
+    color: @sapphire;
 }
 
-
-
 #custom-dots {
-    margin-right: 10px;
+    color: @mauve;
     font-size: 16px;
 }
 
-#cpu {
-    margin-right: 10px;
-    border-radius: 20px;
-    margin-top: 10px;
-    margin-bottom: 9px;
+#memory {
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @mauve;
 }
 
+#cpu {
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @sky;
+}
 
-#memory {
-    margin-right: 10px;
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+#custom-gpu-usage {
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @green;
 }
 
 #mpris {
-    color: rgba(200, 200, 200, 1);
-
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @mauve;
 }
 
+/* =====================================Center=========================================== */
+
 #custom-notification {
-    margin-right: 10px;
-    font-size: 15px;
+  background: @theme_bg_color;
+  border-radius: 9px;
+  padding: 0px 13px 0px 10px;
+  color: @sapphire;
 }
 
 #workspaces {
-    background: rgba(45, 45, 45, 1);
-    border-radius: 20px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    background: @theme_bg_color;
+    border-radius: 9px;
+    padding: 0px 10px 0px 10px;
+    font-size: 20px;
+    color: @green;
 }
 
 #workspaces button {
-    padding: 0 2px;            /* Reduce el padding horizontal de los botones */
-    margin: 2px 0;            /* Reduce los márgenes verticales de los botones */
+    padding: 0 2px;
+    margin: 2px 0;
 }
 
-#workspaces button.empty {
-    color: rgba(120, 120, 120, 1);
+#workspaces button.visible {
+    color: @green;
 }
 
 #workspaces button.active {
-    color: rgb(255, 255, 255);
+    color: @yellow;
 }
 
-#workspaces button.default {
-    color: rgba(120, 120, 120, 1);
+#window {
+    background: @theme_bg_color;
+    border-radius: 9px;
+    padding: 0px 10px 0px 10px;
 }
 
 #custom-updates {
-    font-size: 15px;
-    margin-right: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 4px;
+    border-radius: 9px;
+    color: @maroon;
+    font-size: 16px;
+}
+
+/* =====================================Right=========================================== */
+
+#tray {
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
 }
 
 #bluetooth {
-    font-size: 14px;
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @mauve;
 }
 
 #pulseaudio {
-    font-size: 14px;;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @pink;
 }
 
 
 #network {
-    font-size: 14px;
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
-}
-
-#backlight {
-    margin-right: 10px;
-    font-size: 14px;
-    border-radius: 20px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @red;
 }
 
 #battery {
-    font-size: 14px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @peach;
+}
+
+#backlight {
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @yellow;
 }
 
 #clock {
-    margin-right: 10px;
-    font-size: 14px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 10px 0px 10px;
+    border-radius: 9px;
+    color: @green;
 }
 
 #custom-power {
-    margin-right: 10px;
-    font-size: 14px;
-    margin-top: 9px;
-    margin-bottom: 9px;
+    background: @theme_bg_color;
+    padding: 0px 14px 0px 12px;
+    border-radius: 9px;
+    color: @red;
 }
-
-#custom-tray-arrow {
-    margin-right: 0px;
-    font-size: 14px;
-    margin-top: 9px;
-    margin-bottom: 9px;
-}
-
